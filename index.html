@@ -6,7 +6,7 @@
 <title>찬양 콘티 대시보드</title>
 <link rel="manifest" href="manifest.webmanifest" />
 <link rel="icon" href="icon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="icon.svg" />
+<link rel="apple-touch-icon" href="icon-180.png" />
 <meta name="theme-color" content="#1B2430" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -2082,6 +2082,12 @@ document.getElementById("refresh-btn").onclick = () => refreshFromServer();
     document.getElementById("login-error").textContent = "서버에 연결할 수 없어요.";
   }
 })();
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
